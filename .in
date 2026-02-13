@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>LAZIZ PIZZA POINT</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+body{margin:0;font-family:Arial;background:#fafafa}
+header{background:#b30000;color:white;text-align:center;padding:15px}
+nav a{color:white;margin:10px;text-decoration:none;font-weight:bold}
+
+.slide{display:none;height:300px;color:white;text-align:center;padding-top:80px;font-size:22px}
+.s1{background:linear-gradient(#000,#900)}
+.s2{background:linear-gradient(#900,#333)}
+.s3{background:linear-gradient(#333,#111)}
+.s4{background:linear-gradient(#ff6a00,#900)}
+.s5{background:linear-gradient(#444,#000)}
+
+section{padding:20px}
+.card{border:1px solid #ccc;padding:10px;margin:10px;background:white}
+button{background:#b30000;color:white;padding:8px 12px;border:none;border-radius:5px}
+
+.cart{position:fixed;top:10px;right:10px;background:black;color:white;padding:10px;border-radius:5px}
+
+input,select,textarea{width:100%;padding:8px;margin:6px}
+
+footer{background:#000;color:white;text-align:center;padding:15px}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>🍕 LAZIZ PIZZA POINT</h1>
+<p>If you go but i am not go out from the laziz pizzas</p>
+
+<nav>
+<a href="#menu">Menu</a>
+<a href="#order">Order</a>
+<a href="#privacy">Privacy</a>
+<a href="tel:9760097691">📞 Call</a>
+</nav>
+</header>
+
+<div class="cart">🛒 Cart: <span id="cart">0</span></div>
+
+<!-- SLIDES -->
+
+<div class="slide s1">
+Bhookh lage zor se?<br>
+Laziz Pizza Point ko call karo dil se 😄<br>
+Ek slice lo… phir bolna ‘bhai aur laga do!’
+</div>
+
+<div class="slide s2">
+Mood off? Girlfriend naraz?<br>
+Ek pizza lao… sab set ho jao! 😎<br>
+Laziz Pizza Point – Cheese wali therapy!
+</div>
+
+<div class="slide s3">🔥 Fresh Hot Pizza Everyday</div>
+<div class="slide s4">🎉 First Purchase Discount Available</div>
+<div class="slide s5">👨‍🍳 Professional Chefs</div>
+
+<section>
+<h2>Top Products</h2>
+<div class="card">Cheese Pizza <button onclick="add()">+</button></div>
+<div class="card">Veg Burger <button onclick="add()">+</button></div>
+<div class="card">Grilled Sandwich <button onclick="add()">+</button></div>
+</section>
+
+<section id="menu">
+<h2>Menu & Ingredients</h2>
+<ul>
+<li>Cheese Pizza – Mozzarella, Tomato</li>
+<li>Paneer Pizza – Paneer, Capsicum</li>
+<li>Burger – Veg Patty, Lettuce</li>
+<li>Sandwich – Corn, Cheese</li>
+</ul>
+<button onclick="location='#order'">Visit Menu</button>
+</section>
+
+<section id="order">
+<h2>Order Now – Laziz Pizza Point</h2>
+
+<form onsubmit="order();return false">
+
+<input id="name" placeholder="Full Name" required>
+<input id="phone" placeholder="Mobile / WhatsApp Number" required>
+<textarea id="address" placeholder="Delivery Address"></textarea>
+
+<select id="item">
+<option>Pizza</option>
+<option>Burger</option>
+<option>Sandwich</option>
+</select>
+
+<input id="qty" value="1" placeholder="Quantity">
+<textarea id="note" placeholder="Any Special Instruction"></textarea>
+
+<button>👉 Place Order Now</button>
+</form>
+
+<br>
+<button onclick="order()">Confirm Your Order On WhatsApp</button>
+</section>
+
+<section>
+<h2>Our Chefs</h2>
+<img src="https://images.unsplash.com/featured/?chef" width="100%">
+</section>
+
+<section>
+<h2>Google Map</h2>
+<iframe width="100%" height="250"
+src="https://maps.google.com/maps?q=https://maps.app.goo.gl/aRvaxe5XH63CjvS66&output=embed">
+</iframe>
+</section>
+
+<section id="privacy">
+<h2>Privacy Policy</h2>
+<p>
+LAZIZ PIZZA POINT customers ki privacy ka poora khayal rakhta hai.
+
+We collect:
+Name, Phone, Address, Order Details.
+
+Use:
+Order confirm  
+WhatsApp updates  
+Delivery  
+Support  
+
+No third party sharing.
+
+WhatsApp: 9760097691
+</p>
+</section>
+
+<footer>
+Instagram | Facebook | Twitter<br>
+Gmail: yourgmail@gmail.com<br>
+📱 WhatsApp: 9760097691<br>
+© Laziz Pizza Point
+</footer>
+
+<script>
+let i=0;
+show();
+
+function show(){
+let s=document.getElementsByClassName("slide");
+for(let j=0;j<s.length;j++)s[j].style.display="none";
+i++; if(i>s.length)i=1;
+s[i-1].style.display="block";
+setTimeout(show,2000);
+}
+
+let cart=0;
+function add(){
+cart++;
+document.getElementById("cart").innerHTML=cart;
+}
+
+function order(){
+let n=name.value;
+let p=phone.value;
+let a=address.value;
+let it=item.value;
+let q=qty.value;
+
+let customer=`Thank you for ordering from LAZIZ PIZZA POINT!
+
+Your order placed successfully.
+Please wait — your delicious food will arrive in just a few minutes!`;
+
+let admin=`New Order Received!
+
+Name: ${n}
+Phone: ${p}
+Address: ${a}
+Item: ${it}
+Quantity: ${q}
+
+Please confirm ASAP`;
+
+window.open("https://wa.me/91"+p+"?text="+encodeURIComponent(customer));
+window.open("https://wa.me/919760097691?text="+encodeURIComponent(admin));
+
+alert("Thanks for contacting us!");
+}
+</script>
+
+</body>
+</html>
